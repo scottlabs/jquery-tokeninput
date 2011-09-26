@@ -115,6 +115,10 @@ var methods = {
     },
     get: function() {
         return this.data("tokenInputObject").getTokens();
+    },
+    flush: function() {
+       this.data("tokenInputObject").clearCache();
+       return this;
     }
 }
 
@@ -420,6 +424,10 @@ $.TokenList = function (input, url_or_data, settings) {
 
     this.getTokens = function() {
         return saved_tokens;
+    }
+
+    this.clearCache = function() {
+        cache.flush();
     }
 
     //
@@ -842,7 +850,7 @@ $.TokenList.Cache = function (options) {
     var data = {};
     var size = 0;
 
-    var flush = function () {
+    this.flush = function () {
         data = {};
         size = 0;
     };
