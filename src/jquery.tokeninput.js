@@ -19,6 +19,7 @@ var DEFAULT_SETTINGS = {
     propertyToSearch: "name",
     jsonContainer: null,
     contentType: "json",
+    allowNewResults: false,
 
 	// Prepopulation settings
     prePopulate: null,
@@ -260,11 +261,17 @@ $.TokenList = function (input, url_or_data, settings) {
                     }
                     break;
 
-                case KEY.TAB:
-                case KEY.ENTER:
+					case KEY.ENTER:
                 case KEY.NUMPAD_ENTER:
+						if (settings.allowNewResult && ! selected_dropdown_item) {
+							//console.log(this);
+						  add_token({name:$(this).val()});
+                    //hidden_input.change();
+						}
+                case KEY.TAB:
                 case KEY.COMMA:
                   if(selected_dropdown_item) {
+							//console.log($(selected_dropdown_item).data("tokeninput"));
                     add_token($(selected_dropdown_item).data("tokeninput"));
                     hidden_input.change();
                     return false;
