@@ -19,7 +19,7 @@ var DEFAULT_SETTINGS = {
     propertyToSearch: "name",
     jsonContainer: null,
     contentType: "json",
-    allowNewResults: false,
+    allowNewResult: false,
 
 	// Prepopulation settings
     prePopulate: null,
