@@ -32,6 +32,7 @@ var DEFAULT_SETTINGS = {
     deleteText: "&times;",
     animateDropdown: true,
     theme: null,
+    allowResizeInput: true,
     resultsFormatter: function(item){ return "<li>" + item[this.propertyToSearch]+ "</li>" },
     tokenFormatter: function(item) { return "<li><p>" + item[this.propertyToSearch] + "</p></li>" },
 
@@ -434,6 +435,7 @@ $.TokenList = function (input, url_or_data, settings) {
     }
 
     function resize_input() {
+        if(! settings.allowResizeInput) {return;}		
         if(input_val === (input_val = input_box.val())) {return;}
 
         // Enter new content into resizer and resize input accordingly
